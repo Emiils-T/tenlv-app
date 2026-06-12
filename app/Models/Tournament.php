@@ -2,11 +2,19 @@
 
 namespace App\Models;
 
+use Database\Factories\TournamentFactory;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+#[UseFactory(TournamentFactory::class)]
 class Tournament extends Model
 {
+
     protected $fillable = ['name', 'date', 'status', 'organiser_id', 'court_id'];
+
+    /** @use HasFactory<TournamentFactory> */
+    use HasFactory;
 
     public function organiser() {
         return $this->belongsTo(User::class, 'organiser_id');
@@ -17,7 +25,7 @@ class Tournament extends Model
     }
 
     public function players() {
-        return $this->belongsToMany(User::class, 'tournament_players')
+        return $this->belongsToMany(User::class, 'tournament_registrations')
             ->withPivot('status')
             ->withTimestamps();
     }

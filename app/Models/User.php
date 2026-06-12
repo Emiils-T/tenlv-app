@@ -34,7 +34,7 @@ class User extends Authenticatable
         return $this->hasMany(Tournament::class, 'organiser_id');
     }
     public function tournaments() {
-        return $this->belongsToMany(Tournament::class, 'tournament_players')
+        return $this->belongsToMany(Tournament::class, 'tournament_registrations')
             ->withPivot('status')
             ->withTimestamps();
     }

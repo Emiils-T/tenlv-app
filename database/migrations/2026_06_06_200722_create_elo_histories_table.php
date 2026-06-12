@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('elo_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('tennnis_match_id')->constrained('tennis_matches')->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->foreignId('tennnis_match_id')
+                ->constrained('tennis_matches')
+                ->onDelete('cascade');
             $table->integer('elo_before');
             $table->integer('elo_after');
             $table->timestamps();
