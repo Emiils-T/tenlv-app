@@ -6,6 +6,7 @@ use App\Models\Court;
 use App\Models\Tournament;
 use App\Models\TournamentRegistration;
 use App\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -37,11 +38,11 @@ class DatabaseSeeder extends Seeder
             'surface_type' => 'Sintētisks'
         ]);
         */
-        Tournament::factory(4)->create();
+        Tournament::factory(4)->create()->each(function ($tournament) {
+            $players = User::factory(4)->create();
+            $tournament->players()->attach($players);
+        });
 
-        TournamentRegistration::create([
-
-        ]);
 
     }
 }

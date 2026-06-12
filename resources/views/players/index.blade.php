@@ -21,7 +21,7 @@
             <div class="bg-white">
                 <div>
                     <table>
-                        <thead class="bg-gray-100 text-gray-700">
+                        <thead class="bg-black text-white">
                         <tr>
                             <th class="border-b p-3">Vārds</th>
                             <th class="border-b p-3">E-pasts</th>

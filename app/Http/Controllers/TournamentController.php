@@ -87,7 +87,6 @@ class TournamentController extends Controller
         }
 
         uasort($standings, fn($a, $b) => $b['wins'] <=> $a['wins']);
-
         return view('tournaments.show', compact(
             'tournament',
             'players',
@@ -106,7 +105,6 @@ class TournamentController extends Controller
         return view('tournaments.edit', compact('tournament', 'courts'));
     }
 
-    // Saglabā rediģētās izmaiņas
     public function update(Request $request, Tournament $tournament)
     {
         if ($request->user()->cannot('edit', $tournament)) {
@@ -125,7 +123,6 @@ class TournamentController extends Controller
         return redirect()->route('tournaments.show', $tournament)->with('success', 'Turnīra informācija atjaunota!');
     }
 
-    // Dzēš turnīru
     public function destroy(Request $request, Tournament $tournament)
     {
         if ($request->user()->cannot('delete', $tournament)) {
