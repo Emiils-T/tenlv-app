@@ -134,6 +134,8 @@
         </div>
 
         //Livewire table sakums
+        <livewire:score-table :tournament="$tournament"/>
+{{--
         <div>
             <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
                 <h3 class="text-lg font-bold mb-4 text-gray-800">{{__('messages.tournament_table')}}</h3>
@@ -188,6 +190,7 @@
                 <img src="http://openweathermap.org/img/wn/{{$weatherForecast['icon']}}@2x.png" alt="">
             </div>
         </div>
+--}}
         //Livewire table sakums
         <div class="py-12">
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">

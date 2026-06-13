@@ -9,6 +9,8 @@ use Livewire\Component;
 
 new class extends Component {
 
+    //TODO: pielikt parbaudi vai match ar tiem player id jau neeksistē tabulā
+
     public Tournament $tournament;
     public $players;
 
@@ -41,6 +43,7 @@ new class extends Component {
             $this->addError('winner_id', __('messages.winner_error'));
             return;
         }
+
 
         $match = TennisMatch::create([
             'tournament_id' => $this->tournament->id,

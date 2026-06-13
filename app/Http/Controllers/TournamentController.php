@@ -61,7 +61,7 @@ class TournamentController extends Controller
 
         $user = Auth::id();
 
-        // standings tabula
+        /*// standings tabula
         $standings = [];
         foreach ($acceptedPlayers as $player) {
             $standings[$player->id] = [
@@ -84,13 +84,12 @@ class TournamentController extends Controller
                 $standings[$p2]['wins']++;
                 $standings[$p1]['losses']++;
             }
-        }
+        }*/
 
-        uasort($standings, fn($a, $b) => $b['wins'] <=> $a['wins']);
+        //uasort($standings, fn($a, $b) => $b['wins'] <=> $a['wins']);
         return view('tournaments.show', compact(
             'tournament',
-            'players',
-            'standings', 'user',
+            'players', 'user',
             'weatherForecast'));
     }
 
