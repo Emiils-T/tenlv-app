@@ -35,7 +35,10 @@ return [
     'tournament_table' => 'Tournament Table',
     'player'=> 'Player',
     'delete' => 'Delete Tournament',
-    'confirm_delete' =>'Are you sure you want to delete the tournament? This is irreversible!'
+    'confirm_delete' =>'Are you sure you want to delete the tournament? This is irreversible!',
+    'score_saved'=>'Score Saved!',
+    'winner_error'=>'Winner has to be one of the two players'
+
 
 
 

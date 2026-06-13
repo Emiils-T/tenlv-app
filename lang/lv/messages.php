@@ -35,7 +35,10 @@ return [
     'tournament_table' => 'Turnīra tabula',
     'player'=> 'Spelētājs',
     'delete' => 'Dzēst turnīru',
-    'confirm_delete' => 'Vai tiešām vēlies dzēst šo turnīru? Šī darbība ir neatgriezeniska.'
+    'confirm_delete' => 'Vai tiešām vēlies dzēst šo turnīru? Šī darbība ir neatgriezeniska.',
+    'score_saved'=>'Rezultāts saglabāts!',
+    'winner_error'=>'Uzvarētājam jābūt vienam no diviem mača spēlētājiem',
+
 
 
 

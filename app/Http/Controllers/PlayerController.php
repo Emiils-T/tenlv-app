@@ -14,7 +14,7 @@ class PlayerController extends Controller
             abort(403, 'Tikai administratoriem ir pieeja šai lapai.');
         }
 
-        $users = User::withTrashed()->orderBy('name')->get();
+        $users = User::withTrashed()->orderBy('name')->paginate(25);
 
         return view('players.index', compact('users'));
     }
