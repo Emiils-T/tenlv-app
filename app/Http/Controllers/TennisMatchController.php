@@ -36,7 +36,6 @@ class TennisMatchController extends Controller
             'score' => 'required|string|max:50',
         ]);
 
-        // Tikai viens var būt uzvarētājs
         if (!in_array($validated['winner_id'], [$validated['player1_id'], $validated['player2_id']])) {
             return back()->withErrors(['winner_id' => 'Uzvarētājam ir jābūt vienam no izvēlētajiem spēlētājiem.'])->withInput();
         }

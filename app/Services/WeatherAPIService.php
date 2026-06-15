@@ -6,7 +6,8 @@ use App\Models\Tournament;
 class WeatherAPIService{
 
 
-    public function getWeather(Tournament $tournament){
+    public function getWeather(Tournament $tournament): array
+    {
 
         $key = env('API_KEY');
         $address = $tournament->court->address;

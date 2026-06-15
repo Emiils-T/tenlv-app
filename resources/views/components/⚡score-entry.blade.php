@@ -9,7 +9,6 @@ use Livewire\Component;
 
 new class extends Component {
 
-    //TODO: pielikt parbaudi vai match ar tiem player id jau neeksistē tabulā
 
     public Tournament $tournament;
     public $players;
@@ -44,7 +43,6 @@ new class extends Component {
             return;
         }
 
-
         $match = TennisMatch::create([
             'tournament_id' => $this->tournament->id,
             'player1_id' => $this->player1_id,
@@ -55,7 +53,7 @@ new class extends Component {
 
         $player1 = User::find($this->player1_id);
         $player2 = User::find($this->player2_id);
-        $eloService = app(\App\Services\EloService::class);
+        $eloService = app(EloService::class);
         $eloService->calculateAndApply($player1, $player2, $this->winner_id, $match);
         $this->isSaved = true;
 

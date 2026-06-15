@@ -6,6 +6,8 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -29,15 +31,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function organizedTournaments() {
+    public function organizedTournaments(): HasMany
+    {
         return $this->hasMany(Tournament::class, 'organiser_id');
     }
-    public function tournaments() {
+    public function tournaments(): BelongsToMany
+    {
         return $this->belongsToMany(Tournament::class, 'tournament_registrations')
             ->withPivot('status')
             ->withTimestamps();
     }
-    public function eloHistory() {
+    public function eloHistory(): HasMany
+    {
         return $this->hasMany(EloHistory::class);
     }
 }

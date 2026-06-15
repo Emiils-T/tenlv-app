@@ -4,13 +4,13 @@
             {{__('Player Info')}}
         </h2>
     </x-slot>
-    <div>
-        <div>
-            <div class="flex w-1/2 items-center justify-between text-center">
+    <div class="container mx-auto px-4">
+        <div class="container mx-auto text-center">
+            <div>
                 <div>
                     <h3 class="text-2xl"> {{$user->name}}</h3>
                 </div>
-                <div class="text-right">
+                <div class="">
                     <p>Pašreizējais ELO</p>
                     <p>{{$user->elo_rating}}</p>
                 </div>
@@ -21,9 +21,9 @@
                     <h4>ELO Reitinga vēsture</h4>
                 </div>
                 <div class="bg-neutral-primary-soft block  p-6 border border-default rounded-base shadow-xs">
-                    <table>
+                    <table class="w-full">
                         <thead>
-                        <tr>
+                        <tr class="bg-black text-white">
                             <th>Datums</th>
                             <th>Pretinieks</th>
                             <th>Rezultāts</th>
@@ -41,7 +41,7 @@
                                 $win = $match->winner_id == $user->id;
                             @endphp
 
-                            <tr>
+                            <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-7">
                                     {{$history->created_at->format('d.m.Y H:i')}}
                                 </td>

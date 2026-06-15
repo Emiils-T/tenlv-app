@@ -133,65 +133,7 @@
             @endif
         </div>
 
-        //Livewire table sakums
         <livewire:score-table :tournament="$tournament"/>
-{{--
-        <div>
-            <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 class="text-lg font-bold mb-4 text-gray-800">{{__('messages.tournament_table')}}</h3>
-
-                <table class="w-full text-sm text-left border-collapse">
-                    <thead>
-                    <tr class="bg-gray-100 text-gray-700">
-                        <th class="border p-2">{{__('messages.position')}}</th>
-                        <th class="border p-2">{{__('messages.player')}}</th>
-                        <th class="border p-2 text-center">{{__('messages.wins')}}</th>
-                        <th class="border p-2 text-center">{{__('messages.losses')}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @php $place = 1; @endphp
-                    @foreach($standings as $row)
-                        <tr class="hover:bg-gray-50">
-                            <td class="border p-2 font-bold text-blue-600">{{ $place++ }}</td>
-                            <td class="border p-2 font-medium">{{ $row['player']->name }}</td>
-                            <td class="border p-2 text-center text-green-600 font-semibold">{{ $row['wins'] }}</td>
-                            <td class="border p-2 text-center text-red-500">{{ $row['losses'] }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-neutral-primary-soft block  p-6 border border-default rounded-base shadow-xs">
-                <table class="w-full text-sm text-center rtl:text-center text-body">
-                    <thead>
-                    <tr>
-                        <th>{{__('messages.players')}}</th>
-                        <th>{{__('messages.result')}}</th>
-                        <th>{{__('messages.date')}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($tournament->tennisMatches as $match)
-                        <tr>
-                            <td>{{$match->player1->name}} | {{$match->player2->name}}</td>
-                            <td>{{$match->score}}</td>
-                            <td>{{$match->updated_at}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-gray-300 sm:rounded-lg p-2">
-                <h3 class="text-lg font-bold mt-6 text-center">{{__('messages.weather')}}</h3>
-                <p>{{__('messages.weather_temp')}}: {{$weatherForecast['temp']}} C</p>
-                <p>{{__('messages.weather_wind_speed')}}: {{$weatherForecast['wind']['speed']}} m/s</p>
-                <p>{{__('messages.weather_wind_gust')}}: {{$weatherForecast['wind']['gust']}} m/s</p>
-                <img src="http://openweathermap.org/img/wn/{{$weatherForecast['icon']}}@2x.png" alt="">
-            </div>
-        </div>
---}}
-        //Livewire table sakums
         <div class="py-12">
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">

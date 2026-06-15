@@ -15,12 +15,14 @@
             <tbody>
             @foreach($users as $user)
                 <tr class="hover:bg-gray-50 text-base">
-                    <td><a href="{{route('players.show',$user['id'])}}"> {{$user['name']}}</a></td>
-                    <td>{{$user['elo_rating']}}</td>
+                    <td><a href="{{route('players.show',$user)}}">{{$user->name}}</a></td>
+                    <td>{{$user->elo_rating}}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        {{ $users->links() }}
     </div>
+
 
 </x-app-layout>

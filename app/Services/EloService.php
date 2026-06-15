@@ -10,9 +10,9 @@ class EloService
     /**
      * Aprēķina un atjauno ELO reitingus pēc mača
      */
-    public function calculateAndApply(User $player1, User $player2, $winnerId, TennisMatch $match)
+    public function calculateAndApply(User $player1, User $player2, $winnerId, TennisMatch $match): void
     {
-        $kFactor = 32;
+        $k = 32;
 
         $r1 = $player1->elo_rating;
         $r2 = $player2->elo_rating;
@@ -25,8 +25,8 @@ class EloService
         $actual2 = ($winnerId == $player2->id) ? 1 : 0;
 
         // Jaunais reitings
-        $newR1 = (int) round($r1 + $kFactor * ($actual1 - $expected1));
-        $newR2 = (int) round($r2 + $kFactor * ($actual2 - $expected2));
+        $newR1 = (int) round($r1 + $k * ($actual1 - $expected1));
+        $newR2 = (int) round($r2 + $k * ($actual2 - $expected2));
 
         EloHistory::create([
             'user_id' => $player1->id,
