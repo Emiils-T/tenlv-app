@@ -142,6 +142,13 @@
 
                 </div>
             </div>
+            <div class="bg-white sm:rounded-lg mx-auto sm:px-6 lg:px-8">
+                <h3 class="text-lg font-bold mt-6 text-center">{{__('messages.weather')}}</h3>
+                <p>{{__('messages.weather_temp')}}: {{$weatherForecast['temp']}} C</p>
+                <p>{{__('messages.weather_wind_speed')}}: {{$weatherForecast['wind']['speed']}} m/s</p>
+                <p>{{__('messages.weather_wind_gust')}}: {{$weatherForecast['wind']['gust']}} m/s</p>
+                <img src="http://openweathermap.org/img/wn/{{$weatherForecast['icon']}}@2x.png" alt="">
+            </div>
         </div>
     </div>
 </x-app-layout>
