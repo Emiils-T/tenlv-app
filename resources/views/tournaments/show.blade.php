@@ -4,7 +4,7 @@
             {{ __('Tournament') }}
         </h2>
     </x-slot>
-    <div class="flex flex-row items-center justify-center">
+    <div class="flex lg:flex-row items-center justify-center flex-col">
 
         <div class="bg-neutral-primary-soft block max-w-md p-6 border border-default rounded-base shadow-xs">
             <a href="#">
@@ -69,7 +69,7 @@
                     </form>
                 @elseif($tournament->players->contains($user))
                     @php
-                        // Iegūstam konkrētā spēlētāja statusu šajā turnīrā no pivot tabulas
+                        // konkreta speletaja status no pivot tabulas
                         $playerPivot = $tournament->players->find($user)->pivot;
                     @endphp
                     <p class="mt-4 text-sm font-medium">
@@ -133,8 +133,10 @@
             @endif
         </div>
 
-        <livewire:score-table :tournament="$tournament"/>
+            <livewire:score-table :tournament="$tournament"/>
+
         <div class="py-12">
+            @if(Auth::id() == $tournament->organiser_id || Auth::user()->role== 'admin')
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
@@ -142,6 +144,8 @@
 
                 </div>
             </div>
+            @endif
+
             <div class="bg-white sm:rounded-lg mx-auto sm:px-6 lg:px-8">
                 <h3 class="text-lg font-bold mt-6 text-center">{{__('messages.weather')}}</h3>
                 <p>{{__('messages.weather_temp')}}: {{$weatherForecast['temp']}} C</p>
