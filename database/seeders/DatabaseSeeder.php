@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //User::factory(15)->create();
+        User::factory(30)->create();
 
-        /*
+
         Court::create([
             'name'=>"Tuvāk pie stadiona",
             'address'=>'Sporta iela 3, Limbaži, LV-4001',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'address'=>'Skolas iela 11A, Ragana',
             'surface_type' => 'Sintētisks'
         ]);
-        */
+
         Tournament::factory(4)->create()->each(function ($tournament) {
             $players = User::factory(4)->create();
             $tournament->players()->attach($players);
