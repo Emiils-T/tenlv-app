@@ -9,10 +9,11 @@ use Illuminate\Auth\Access\Response;
 class TournamentPolicy
 {
 
-    public function before(User $user, $ability){
+    public function before(User $user):?bool{
         if($user->role=== 'admin'){
             return true;
         }
+        return null;
     }
     /**
      * Determine whether the user can view any models.
@@ -29,6 +30,10 @@ class TournamentPolicy
     public function create(User $user): bool
     {
         return $user->role === 'organiser';
+    }
+    public function edit(User $user, Tournament $tournament): bool
+    {
+        return $user->id === $tournament->organiser_id;
     }
 
     /**

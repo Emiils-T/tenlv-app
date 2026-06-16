@@ -75,14 +75,20 @@
                     <p class="mt-4 text-sm font-medium">
                         {{__('messages.your_app_status')}}:
                         <span class="px-2 py-1 rounded text-xs
-                {{ $playerPivot->status === 'accepted' ? 'bg-green-100 text-green-800' : ($playerPivot->status === 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
+                {{ match($playerPivot->status)
+                    {
+                    'accepted' => 'bg-green-100 text-green-800',
+                    'rejected' => 'bg-red-100 text-red-800',
+                    default => 'bg-yellow-100 text-yellow-800',
+                    }
+                        }}">
                 {{ $playerPivot->status }}
-            </span>
+                        </span>
                     </p>
                 @endif
             @endauth
 
-            @can('update',$tournament)
+            @can('edit',$tournament)
                 <a href="{{route('tournaments.edit',$tournament)}}"
                    class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
                     {{__('messages.edit_tournament')}}
@@ -94,15 +100,6 @@
                     </svg>
                 </a>
             @endcan
-            <a href="{{route('tennisMatches.create',$tournament)}}"
-               class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-                {{__('messages.tennis_matches')}}
-                <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M19 12H5m14 0-4 4m4-4-4-4"/>
-                </svg>
-            </a>
             @can('delete', $tournament)
                 <form method="POST" action="{{ route('tournaments.destroy', $tournament) }}" class="inline-block"
                       onsubmit="return confirm('{{ __('messages.confirm_delete') }}');">
@@ -133,17 +130,17 @@
             @endif
         </div>
 
-            <livewire:score-table :tournament="$tournament"/>
+        <livewire:score-table :tournament="$tournament"/>
 
         <div class="py-12">
             @if(Auth::id() == $tournament->organiser_id || Auth::user()->role== 'admin')
-            <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                    <livewire:score-entry :tournament="$tournament" :players="$players"/>
+                        <livewire:score-entry :tournament="$tournament" :players="$players"/>
 
+                    </div>
                 </div>
-            </div>
             @endif
 
             <div class="bg-white sm:rounded-lg mx-auto sm:px-6 lg:px-8">

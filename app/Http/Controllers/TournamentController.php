@@ -40,7 +40,7 @@ class TournamentController extends Controller
         }
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'date' => 'required|date',
+            'date' => 'required|date|afterOrEqual:today',
             'court_id' => 'required|exists:courts,id',
         ]);
 
@@ -83,13 +83,13 @@ class TournamentController extends Controller
 
     public function update(Request $request, Tournament $tournament): RedirectResponse
     {
-        if ($request->user()->cannot('edit', $tournament)) {
+        if ($request->user()->cannot('update', $tournament)) {
             abort(403, 'You are not authorized to edit this event.');
         }
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'date' => 'required|date',
+            'date' => 'required|date|afterOrEqual:today',
             'court_id' => 'required|exists:courts,id',
             'status' => 'required|in:open,ongoing,finished,cancelled',
         ]);
